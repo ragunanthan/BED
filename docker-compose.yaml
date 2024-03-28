@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  #mysql
+  mysql_db:
+    container_name: database_container
+    image: mysql:latest
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=tr@143TR
+      - MYSQL_DATABASE=newdb
+      - MYSQL_PASSWORD=tr@143TR
+    ports:
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+  app:
+    build: .
+    ports:
+      - 3000:3000
+    environment:
+      - PORT=3000
+      - MYSQL_ROOT_PASSWORD=tr@143TR
+      - MYSQL_ROOT_USER=root
+      - MYSQL_DATABASE=newdb
+      - MYSQL_HOST=mysql_db
+      - MYSQL_PORT=3306
+
+    depends_on:
+      - mysql_db
+
+volumes:
+  db: 
