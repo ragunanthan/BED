@@ -4,7 +4,6 @@ import authLib from "auth-lib-jwt";
 
 import 'dotenv/config';
 
-import authRoutes from "./src/Routes/authRoutes.js";
 import { dbConnection } from "./src/dbConnection.js";
 import authService from "./src/services/authService.js";
 
@@ -37,7 +36,6 @@ app.use(express.static("public"));
 app.use(helmet());
 
 // routers
-app.use("/api", authRoutes);
 app.use("/api/auth", authLib.getRoutes());
 
 
