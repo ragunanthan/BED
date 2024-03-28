@@ -83,8 +83,6 @@ const erroHandler =
 
 export default function authService() {
   return {
-    generateAccessToken,
-    generateRefreshToken,
     getUser: erroHandler(getUser),
     deleteExistingToken: erroHandler(deleteExistingToken),
     getToken: erroHandler(getToken),
