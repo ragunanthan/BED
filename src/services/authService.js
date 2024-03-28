@@ -1,17 +1,5 @@
-import jwt from "jsonwebtoken";
 import { dbconnect } from "../dbConnection.js";
 
-const generateAccessToken = (payload) => {
-  return jwt.sign(payload, process.env.ACCESS_TOKEN_PRIVATE_KEY, {
-    expiresIn: "14m",
-  });
-};
-
-const generateRefreshToken = (payload) => {
-  return jwt.sign(payload, process.env.REFRESH_TOKEN_PRIVATE_KEY, {
-    expiresIn: "30d",
-  });
-};
 
 const getUser = async (email) => {
   const [user] = await dbconnect.execute("SELECT * FROM user WHERE email = ?", [
