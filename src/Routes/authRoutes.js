@@ -3,7 +3,9 @@ import { login, signUp, logout, refershToken } from "../controllers/authControll
 
 
 const router = Router();
-
+router.get("/", async (req, res) => {
+    res.send("Happy")
+});
 router.post("/signUp", signUp);
 router.post("/logIn", login);
 router.post("/logout", logout);
